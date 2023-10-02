@@ -1,0 +1,28 @@
+body {
+  min-height: 3000px;
+}
+
+nav {
+  background-color: #d0dce2;
+}
+
+.jumbotron {
+  padding-top: 100px;
+  background-color: #d0dce2;
+}
+
+#foto {
+  background-color: #d0dce2;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #d0dce2;
+}
+
+section {
+  padding-top: 100px;
+}
