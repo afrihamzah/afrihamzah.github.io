@@ -153,6 +153,10 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-8">
+            <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+              <strong>Thank You!</strong> Your message has been received.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <form name="PortoForm">
               <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
@@ -167,6 +171,10 @@
                 <textarea class="form-control" id="pesan" rows="3" name="Message"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
+              <button class="btn btn-primary btn-send d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm btn-loading" aria-hidden="true"></span>
+                <span role="status">Loading...</span>
+              </button>
             </form>
           </div>
         </div>
@@ -194,9 +202,16 @@
     <script>
       const scriptURL = "https://script.google.com/macros/s/AKfycbxjdnts74unfx53-_BV3WI7CWnBdgLHxZCc8mvzoFhQmWaKayfFFK4GidC4e3hc6Fwj/exec";
       const form = document.forms["PortoForm"];
+      const btnSend = document.querySelector(".btn-send");
+      const btnLoading = document.querySelector(".btn.loading");
+      const alert = document.querySelector(".alert");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+        // ketika tombol sumbit di klik
+        // tampilkan tombol loading, hilangkan tombol kirim
+        btnLoading.classList.toggle("d-none");
+        btnSend.classList.toggle("d-none");
         fetch(scriptURL, { method: "POST", body: new FormData(form) })
           .then((response) => console.log("Success!", response))
           .catch((error) => console.error("Error!", error.message));
